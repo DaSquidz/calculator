@@ -64,9 +64,10 @@ body {
   grid-area: display;
   margin: 1vw 1vw 1vw 1vw;
   border-radius: 1vh;
-  font-size: 70px;
+  font-size: 12vw;
   text-align: right;
-  word-break: break-all;
+  white-space: nowrap;
+  overflow: hidden;
 }
 .clear {
   grid-area: clear;
@@ -129,18 +130,23 @@ body {
         grid-area: display;
         margin: 1vw 1vw 1vw 1vw;
         border-radius: 1vh;
-        font-size: 34px !important;
+        font-size: 34px;
         text-align: right;
         word-break: break-all;
     }
 }
-@media (max-width: 500px) {
+
+@media (min-width: 640px) {
     .display {
-      font-size: 58px;
-    }
-}
-@media (max-width: 768px) {
-    .display {
-      font-size: 78px;
+        display: inline-block;
+        padding-right: 1.5vw;
+        padding-top: 1.5vh;
+        background: #c5dbd4;
+        grid-area: display;
+        margin: 1vw 1vw 1vw 1vw;
+        border-radius: 1vh;
+        font-size: 70px;
+        text-align: right;
+        word-break: break-all;
     }
 }
