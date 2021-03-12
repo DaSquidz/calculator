@@ -120,7 +120,11 @@ body {
 .equals {
   grid-area: equals;
 }
-
+.btn:active {
+    -moz-box-shadow:    inset 0 0 1vmin 00.5vmin #221e31;
+   -webkit-box-shadow: inset 0 0 1vmin 0.5vmin #221e31;
+   box-shadow:         inset 0 0 1vmin 0.5vmin #221e31;
+}
 @media (max-width: 376px) {
     .display {
         display: inline-block;
@@ -135,7 +139,6 @@ body {
         word-break: break-all;
     }
 }
-
 @media (min-width: 640px) {
     .display {
         display: inline-block;

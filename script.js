@@ -1,20 +1,22 @@
-const clearButton = document.querySelector('#clear-btn');
-const divisionButton = document.querySelector('#division-btn');
-const sevenButton = document.querySelector('#seven-btn');
-const eightButton = document.querySelector('#eight-btn');
-const nineButton = document.querySelector('#nine-btn');
-const multiplicationButton = document.querySelector('#multiplication-btn');
-const fourButton = document.querySelector('#four-btn');
-const fiveButton = document.querySelector('#five-btn');
-const sixButton = document.querySelector('#six-btn');
-const subtractionButton = document.querySelector('#subtraction-btn');
-const oneButton = document.querySelector('#one-btn');
-const twoButton = document.querySelector('#two-btn');
-const threeButton = document.querySelector('#three-btn');
-const additionButton = document.querySelector('#addition-btn');
-const zeroButton = document.querySelector('#zero-btn');
-const dotButton = document.querySelector('#dot-btn');
-const equalsButton = document.querySelector('#equals-btn');
+const clearButton = document.getElementById('#clear-btn');
+const divisionButton = document.getElementById('#division-btn');
+const sevenButton = document.getElementById('#seven-btn');
+const eightButton = document.getElementById('#eight-btn');
+const nineButton = document.getElementById('#nine-btn');
+const multiplicationButton = document.getElementById('#multiplication-btn');
+const fourButton = document.getElementById('#four-btn');
+const fiveButton = document.getElementById('#five-btn');
+const sixButton = document.getElementById('#six-btn');
+const subtractionButton = document.getElementById('#subtraction-btn');
+const oneButton = document.getElementById('#one-btn');
+const twoButton = document.getElementById('#two-btn');
+const threeButton = document.getElementById('#three-btn');
+const additionButton = document.getElementById('#addition-btn');
+const zeroButton = document.getElementById('#zero-btn');
+const dotButton = document.getElementById('#dot-btn');
+const equalsButton = document.getElementById('#equals-btn');
+
+let display = document.getElementById('#display')
 
 add = (a, b) => a + b;
 subtract = (a, b) => a - b;
