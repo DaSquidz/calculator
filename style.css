@@ -12,6 +12,8 @@ body {
     outline: 0;
     font-size: 4vh;
     font-family: 'Oswald', sans-serif;
+    border: none;
+    text-decoration: none;
 }
 
 .btn-number {
@@ -55,6 +57,9 @@ body {
 
 /* Background colors just for reference */
 .display {
+  display: inline-block;
+  padding-right: 1.5vw;
+  padding-top: 1.5vh;
   background: #c5dbd4;
   grid-area: display;
   margin: 1vw 1vw 1vw 1vw;
