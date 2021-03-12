@@ -10,7 +10,7 @@
 
 .btn-number {
   border-radius: 999px;
-  background-color: #3b3930;
+  background-color: #c2cabb;
 }
 
 .btn-func {
@@ -33,7 +33,7 @@
   max-width: 70vh;
   min-height: 70vh;
   padding: 10px;
-  background-color: #c2cabb;
+  background-color: #3b3930;
 }
 
 .subcont {
@@ -44,7 +44,7 @@
 
 /* Background colors just for reference */
 .display {
-  background: #3b3930;
+  background: #c2cabb;
   grid-area: display;
   margin: 10px 10px 10px 10px;
 }
