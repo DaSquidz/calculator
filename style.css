@@ -1,21 +1,23 @@
-.main {
-
+body {
+    background-color: #051f39;
 }
+
 .btn {
     display: block;
     width: 90%;
     height: 95%;
     outline: 0;
+    font-size: 3vw;
 }
 
 .btn-number {
   border-radius: 999px;
-  background-color: #c2cabb;
+  background-color: #ff8e80;
 }
 
 .btn-func {
     border-radius: 3vmin;
-    background-color: #c8a2c8;
+    background-color: #c53a9d;
 }
 
 .container {
@@ -29,11 +31,11 @@
     "four five six subtraction"
     "one two three addition"
     "zero zero dot equals";
-  margin: 1vh 10vw 1vh 10vw;
+  margin: 10vh auto;
   max-width: 70vh;
   min-height: 70vh;
   padding: 10px;
-  background-color: #3b3930;
+  background-color: #4a2480;
 }
 
 .subcont {
@@ -44,7 +46,7 @@
 
 /* Background colors just for reference */
 .display {
-  background: #c2cabb;
+  background: #ff8e80;
   grid-area: display;
   margin: 10px 10px 10px 10px;
 }
