@@ -1,5 +1,5 @@
 body {
-    background-color: #051f39;
+    background-color: #221e31;
 }
 
 .btn {
@@ -12,12 +12,12 @@ body {
 
 .btn-number {
   border-radius: 999px;
-  background-color: #ff8e80;
+  background-color: #c5dbd4;
 }
 
 .btn-func {
     border-radius: 3vmin;
-    background-color: #c53a9d;
+    background-color: #778e98;
 }
 
 .container {
@@ -35,7 +35,7 @@ body {
   max-width: 70vh;
   min-height: 70vh;
   padding: 10px;
-  background-color: #4a2480;
+  background-color: #41485d;
 }
 
 .subcont {
@@ -46,7 +46,7 @@ body {
 
 /* Background colors just for reference */
 .display {
-  background: #ff8e80;
+  background: #c5dbd4;
   grid-area: display;
   margin: 10px 10px 10px 10px;
 }
