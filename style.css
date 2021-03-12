@@ -1,23 +1,30 @@
 body {
     background-color: #221e31;
+    font-family: 'Oswald', sans-serif;
 }
 
 .btn {
-    display: block;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
     width: 90%;
     height: 95%;
     outline: 0;
-    font-size: 3vw;
+    font-size: 4vh;
+    font-family: 'Oswald', sans-serif;
 }
 
 .btn-number {
   border-radius: 999px;
   background-color: #c5dbd4;
+  text-shadow: 0 0 0.5vmin #778e98, 0 0 0.5vmin #778e98;
 }
 
 .btn-func {
     border-radius: 3vmin;
     background-color: #778e98;
+    color: #c5dbd4;
+    text-shadow: 0 0 0.5vmin #221e31, 0 0 0.5vmin #221e31;
 }
 
 .container {
@@ -36,19 +43,26 @@ body {
   min-height: 70vh;
   padding: 10px;
   background-color: #41485d;
+  border-radius: 2vh;
 }
 
 .subcont {
-    display: flex ;
+    display: flex;
     justify-content: center;
     align-items: center;
+    margin: 0.5vh 0.5vw 0.5vh 0.5vw;
 }
 
 /* Background colors just for reference */
 .display {
   background: #c5dbd4;
   grid-area: display;
-  margin: 10px 10px 10px 10px;
+  margin: 1vw 1vw 1vw 1vw;
+  border-radius: 1vh;
+  font-size: 9vh;
+  text-align: right;
+  word-wrap: break-word;
+  word-break: break-all;
 }
 .clear {
   grid-area: clear;
