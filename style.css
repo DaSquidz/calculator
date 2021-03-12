@@ -1,7 +1,7 @@
 .btn {
     display: block;
-    width: 100%;
-    height: 100%;
+    width: 80%;
+    height: 80%;
     outline: 0;
 }
 
@@ -30,6 +30,12 @@
   min-height: 70vh;
   padding: 10px;
   background-color: black;
+}
+
+.subcont {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 /* Background colors just for reference */
