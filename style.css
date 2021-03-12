@@ -1,17 +1,21 @@
+.main {
+
+}
 .btn {
     display: block;
-    width: 80%;
-    height: 80%;
+    width: 90%;
+    height: 95%;
     outline: 0;
 }
 
 .btn-number {
   border-radius: 999px;
+  background-color: #3b3930;
 }
 
 .btn-func {
     border-radius: 3vmin;
-
+    background-color: #c8a2c8;
 }
 
 .container {
@@ -29,86 +33,69 @@
   max-width: 70vh;
   min-height: 70vh;
   padding: 10px;
-  background-color: black;
+  background-color: #c2cabb;
 }
 
 .subcont {
-    display: flex;
+    display: flex ;
     justify-content: center;
     align-items: center;
 }
 
 /* Background colors just for reference */
 .display {
-  background: red;
+  background: #3b3930;
   grid-area: display;
   margin: 10px 10px 10px 10px;
 }
 .clear {
-  background: blue;
   grid-area: clear;
 }
 .division {
-  background: purple;
   grid-area: division;
 }
 .seven {
-  background: yellow;
   grid-area: seven;
 }
 .eight {
-  background: yellow;
   grid-area: eight;
 }
 .nine {
-  background: yellow;
   grid-area: nine;
 }
 .multiplication {
-  background: purple;
   grid-area: multiplication;
 }
 .four {
-  background: yellow;
   grid-area: four;
 }
 .five {
-  background: yellow;
   grid-area: five;
 }
 .six {
-  background: yellow;
   grid-area: six;
 }
 .subtraction {
-  background: purple;
   grid-area: subtraction;
 }
 .one {
-  background: yellow;
   grid-area: one;
 }
 .two {
-  background: yellow;
   grid-area: two;
 }
 .three {
-  background: yellow;
   grid-area: three;
 }
 .addition {
-  background: purple;
   grid-area: addition;
 }
 .zero {
-  background: yellow;
   grid-area: zero;
 }
 .dot {
-  background: yellow;
   grid-area: dot;
 }
 .equals {
-  background: purple;
   grid-area: equals;
 }
