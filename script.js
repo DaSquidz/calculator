@@ -69,6 +69,7 @@ function Evaluate() {
   secondOperand = displayScreen.textContent;
   console.log(`Second operand stored as ${secondOperand}`)
   result = operate(operator, firstOperand, secondOperand);
+  console.log(`Result stored as ${result}`)
   };
   displayScreen.textContent = result;
   firstOperand = result;
@@ -78,16 +79,30 @@ function Evaluate() {
 
 function ClearDisplay() {
   firstOperand = "";
+  console.log(`First operand stored as ${firstOperand}`)
   operator = "";
+  console.log(`Operator stored as ${operator}`);
   secondOperand = "";
+  console.log(`Second operand stored as ${secondOperand}`)
   result = "";
+  console.log(`Result stored as ${result}`)
   displayScreen.textContent = "0";
+  canInputSecondOperand = false;
+  operatorAlreadyInputted = false;
 }
 
 add = (a, b) => a + b;
 subtract = (a, b) => a - b;
 multiply = (a, b) => a * b;
-divide = (a, b) => b === 0 ? 'syntax error' : a / b;
+function divide (a, b) {
+  if(b === 0) {
+    alert("You just blew up the internet and possibly the universe")
+    ClearDisplay();
+  }
+  else { 
+    a / b
+  };
+};
 
 function operate(operator, a, b) {
   if(!isNaN(a) && !isNaN(b)){
