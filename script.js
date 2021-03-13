@@ -27,13 +27,12 @@ let result = "";
 
 let operatorAlreadyInputted = false;
 let canInputSecondOperand = false;
+let equalsPressed = false;
 
 numberButtons.forEach((button) => button.addEventListener("click", () => writeNumber(button.textContent)));
 operatorButtons.forEach((button) => button.addEventListener("click", () => inputOperator(button.textContent)));
 equalsButton.addEventListener("click", Evaluate);
 clearButton.addEventListener("click", ClearDisplay);
-
-
 
 
 function writeNumber(number){
@@ -50,18 +49,18 @@ function inputOperator(oper){
   else {
     if(!operatorAlreadyInputted){
     secondOperand = displayScreen.textContent;
-    console.log(`Second operand stored as ${secondOperand}`)
+    console.log(`Second operand stored as ${secondOperand}, case operatoralreadyinputted false`)
     }
   }
+  
+  wipeScreen();
 
-    
-    wipeScreen();
+  (oper === "×") ? operator = "*" : operator = oper;
+  console.log(`Operator stored as ${operator}`);
+  equalsPressed = false;
 
-    (oper === "×") ? operator = "*" : operator = oper;
-    console.log(`Operator stored as ${operator}`);
-
-    operatorAlreadyInputted = true;
-    canInputSecondOperand = true;
+  operatorAlreadyInputted = true;
+  canInputSecondOperand = true;
 }
 
 function Evaluate() {
@@ -73,6 +72,7 @@ function Evaluate() {
   };
   displayScreen.textContent = result;
   firstOperand = result;
+  equalsPressed = true;
   console.log(`First operand stored as ${firstOperand}`)
   operatorAlreadyInputted = false;
 }
@@ -89,6 +89,7 @@ function ClearDisplay() {
   displayScreen.textContent = "0";
   canInputSecondOperand = false;
   operatorAlreadyInputted = false;
+  equalsPressed = false;
 }
 
 add = (a, b) => a + b;
@@ -122,6 +123,6 @@ function operate(operator, a, b) {
     }
   }
   else {
-    return "one or both numbers are not valid";
+    return "ERR OVER";
   }
 }
