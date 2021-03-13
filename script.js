@@ -18,15 +18,53 @@ const equalsButton = document.getElementById('equals-btn');
 let displayScreen = document.getElementById('display');
 
 const numberButtons = [zeroButton, oneButton, twoButton, threeButton, fourButton, fiveButton, sixButton, sevenButton, eightButton, nineButton, dotButton];
+const operatorButtons = [divisionButton, multiplicationButton, subtractionButton, additionButton];
+
+let firstOperand = "";
+let operator = "";
+let secondOperand = "";
+let result = "";
+
+let canInputSecondOperator = false;
 
 numberButtons.forEach((button) => button.addEventListener("click", () => writeNumber(button.textContent)));
+operatorButtons.forEach((button) => button.addEventListener("click", () => inputOperator(button.textContent)));
+equalsButton.addEventListener("click", Evaluate);
+
+
 
 function writeNumber(number){
     if(displayScreen.textContent === "0") wipeScreen();
     if(displayScreen.textContent.length < 13) displayScreen.textContent += number;
 }
-
 wipeScreen = () => displayScreen.textContent = "";
+
+function inputOperator(oper){
+  if(!canInputSecondOperator) {
+    firstOperand = displayScreen.textContent;
+    console.log(`First operand stored as ${firstOperand}`)
+  }
+  else {
+    secondOperand = displayScreen.textContent;
+    console.log(`Second operand stored as ${secondOperand}`)
+  }
+
+    
+    wipeScreen();
+
+    (oper === "×") ? operator = "*" : operator = oper;
+    console.log(`Operator stored as ${operator}`);
+
+    canInputSecondOperator = true;
+}
+
+function Evaluate() {
+  if(firstOperand !== "" && operator !== ""){
+  secondOperand = displayScreen.textContent;
+  result = operate(operator, firstOperand, secondOperand)
+  };
+  displayScreen.textContent = result;
+}
 
 add = (a, b) => a + b;
 subtract = (a, b) => a - b;
