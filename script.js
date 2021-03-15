@@ -1,109 +1,109 @@
-const clearButton = document.getElementById('clear-btn');
-const divisionButton = document.getElementById('division-btn');
-const sevenButton = document.getElementById('seven-btn');
-const eightButton = document.getElementById('eight-btn');
-const nineButton = document.getElementById('nine-btn');
-const multiplicationButton = document.getElementById('multiplication-btn');
-const fourButton = document.getElementById('four-btn');
-const fiveButton = document.getElementById('five-btn');
-const sixButton = document.getElementById('six-btn');
-const subtractionButton = document.getElementById('subtraction-btn');
-const oneButton = document.getElementById('one-btn');
-const twoButton = document.getElementById('two-btn');
-const threeButton = document.getElementById('three-btn');
-const additionButton = document.getElementById('addition-btn');
-const zeroButton = document.getElementById('zero-btn');
-const dotButton = document.getElementById('dot-btn');
-const equalsButton = document.getElementById('equals-btn');
-let displayScreen = document.getElementById('display');
-
-const numberButtons = [zeroButton, oneButton, twoButton, threeButton, fourButton, fiveButton, sixButton, sevenButton, eightButton, nineButton, dotButton];
-const operatorButtons = [divisionButton, multiplicationButton, subtractionButton, additionButton];
+const numberButtons = document.querySelectorAll('.btn-number');
+const operatorButtons = document.querySelectorAll('.btn-op');
+const equalsButton = document.getElementById('equals');
+const clearButton = document.getElementById('clear');
+const deleteButton = document.getElementById('delete');
+const dotButton = document.getElementById('dot');
+const display = document.getElementById('display');
 
 let firstOperand = "";
-let operator = "";
 let secondOperand = "";
-let result = "";
+let currentOperation = null;
+let shouldResetScreen = false;
 
-let operatorAlreadyInputted = false;
-let canInputSecondOperand = false;
-let equalsPressed = false;
+window.addEventListener("keydown", setInput);
+equalsButton.addEventListener("click", evaluate);
+clearButton.addEventListener("click", clear);
+deleteButton.addEventListener("click", deleteNumber);
+dotButton.addEventListener("click", appendDot);
 
-numberButtons.forEach((button) => button.addEventListener("click", () => writeNumber(button.textContent)));
-operatorButtons.forEach((button) => button.addEventListener("click", () => inputOperator(button.textContent)));
-equalsButton.addEventListener("click", Evaluate);
-clearButton.addEventListener("click", ClearDisplay);
+numberButtons.forEach((button) =>
+  button.addEventListener("click", () => appendNumber(button.textContent))
+);
 
+operatorButtons.forEach((button) =>
+  button.addEventListener("click", () => setOperation(button.textContent))
+);
 
-function writeNumber(number){
-    if(displayScreen.textContent === "0") wipeScreen();
-    if(displayScreen.textContent.length < 13) displayScreen.textContent += number;
-}
-wipeScreen = () => displayScreen.textContent = "";
-
-function inputOperator(oper){
-  if(!canInputSecondOperand) {
-    firstOperand = displayScreen.textContent;
-    console.log(`First operand stored as ${firstOperand}`)
-  }
-  else {
-    if(!operatorAlreadyInputted){
-    secondOperand = displayScreen.textContent;
-    console.log(`Second operand stored as ${secondOperand}, case operatoralreadyinputted false`)
-    }
-  }
-  
-  wipeScreen();
-
-  (oper === "×") ? operator = "*" : operator = oper;
-  console.log(`Operator stored as ${operator}`);
-  equalsPressed = false;
-
-  operatorAlreadyInputted = true;
-  canInputSecondOperand = true;
+function appendNumber(number) {
+  if (display.textContent === "0" || shouldResetScreen) resetScreen();
+  display.textContent += number;
 }
 
-function Evaluate() {
-  if(firstOperand !== "" && operator !== ""){
-  secondOperand = displayScreen.textContent;
-  console.log(`Second operand stored as ${secondOperand}`)
-  result = operate(operator, firstOperand, secondOperand);
-  console.log(`Result stored as ${result}`)
-  };
-  displayScreen.textContent = result;
-  firstOperand = result;
-  equalsPressed = true;
-  console.log(`First operand stored as ${firstOperand}`)
-  operatorAlreadyInputted = false;
+function resetScreen() {
+  display.textContent = "";
+  shouldResetScreen = false;
 }
 
-function ClearDisplay() {
+function clear() {
+  display.textContent = "0";
   firstOperand = "";
-  console.log(`First operand stored as ${firstOperand}`)
-  operator = "";
-  console.log(`Operator stored as ${operator}`);
   secondOperand = "";
-  console.log(`Second operand stored as ${secondOperand}`)
-  result = "";
-  console.log(`Result stored as ${result}`)
-  displayScreen.textContent = "0";
-  canInputSecondOperand = false;
-  operatorAlreadyInputted = false;
-  equalsPressed = false;
+  currentOperation = null;
+}
+
+function appendDot() {
+  if (shouldResetScreen) resetScreen();
+  if (display.textContent === "") display.textContent = "0";
+  if (display.textContent.includes(".")) return;
+  //delete the below line later, checking if it fires twice
+  console.log("appendDot called!")
+  display.textContent += ".";
+}
+
+function deleteNumber() {
+  if(display.textContent !== "0"){
+  display.textContent = display.textContent.toString().slice(0, -1)
+  };
+}
+
+function setOperation(operator) {
+  if (currentOperation !== null) evaluate();
+  firstOperand = display.textContent;
+  currentOperation = operator;
+  shouldResetScreen = true;
+}
+
+function evaluate() {
+  if (currentOperation === null || shouldResetScreen) return;
+  if (currentOperation === "/" && display.textContent === "0") {
+    alert("You just blew up the internet and possibly the universe");
+    clear();
+    return;
+  }
+  secondOperand = display.textContent;
+  display.textContent = roundResult(
+    operate(currentOperation, firstOperand, secondOperand)
+  );
+  currentOperation = null;
+}
+
+function roundResult(number) {
+  return Math.round(number * 1000) / 1000;
+}
+
+function setInput(e) {
+  if (e.key >= 0 && e.key <= 9) appendNumber(e.key);
+  if (e.key === ".") appendDot();
+  if (e.key === "=" || e.key === "Enter") evaluate();
+  if (e.key === "Backspace") deleteNumber();
+  if (e.key === "Escape") clear();
+  if (e.key === "*")
+    setOperation(convertOperator(e.key));
+}
+
+//fix this later
+function convertOperator(keyboardOperator) {
+  if (keyboardOperator === "/") return "÷";
+  if (keyboardOperator === "*") return "×";
+  if (keyboardOperator === "-") return "−";
+  if (keyboardOperator === "+") return "+";
 }
 
 add = (a, b) => a + b;
 subtract = (a, b) => a - b;
 multiply = (a, b) => a * b;
-function divide (a, b) {
-  if(b === 0) {
-    alert("You just blew up the internet and possibly the universe")
-    ClearDisplay();
-  }
-  else { 
-    a / b
-  };
-};
+divide  = (a, b) => a / b;
 
 function operate(operator, a, b) {
   if(!isNaN(a) && !isNaN(b)){
@@ -114,15 +114,17 @@ function operate(operator, a, b) {
     case '-':
       return subtract(+a, +b);
       break;
-    case '*':
+    case '×':
       return multiply(+a, +b);
       break;
     case '/':
-      return divide(+a, +b);
-      break;
+      if (+b === 0) return null;
+      else return divide(+a, +b);
+    default:
+      return null;
     }
   }
   else {
-    return "ERR OVER";
+    return "Invalid numbers";
   }
 }
