@@ -79,7 +79,7 @@ function evaluate() {
 }
 
 function roundResult(number) {
-  return Math.round(number * 1000) / 1000;
+  return Math.round(number * 1000000) / 1000000;
 }
 
 function setInput(e) {
