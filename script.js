@@ -20,50 +20,41 @@ dotButton.addEventListener("click", appendDot);
 numberButtons.forEach((button) =>
   button.addEventListener("click", () => appendNumber(button.textContent))
 );
-
 operatorButtons.forEach((button) =>
   button.addEventListener("click", () => setOperation(button.textContent))
 );
-
 function appendNumber(number) {
   if (display.textContent === "0" || shouldResetScreen) resetScreen();
+  if(display.textContent.length < 13)
   display.textContent += number;
-}
-
+};
 function resetScreen() {
   display.textContent = "";
   shouldResetScreen = false;
-}
-
+};
 function clear() {
   display.textContent = "0";
   firstOperand = "";
   secondOperand = "";
   currentOperation = null;
-}
-
+};
 function appendDot() {
   if (shouldResetScreen) resetScreen();
   if (display.textContent === "") display.textContent = "0";
   if (display.textContent.includes(".")) return;
-  //delete the below line later, checking if it fires twice
-  console.log("appendDot called!")
   display.textContent += ".";
-}
-
+};
 function deleteNumber() {
   if(display.textContent !== "0"){
   display.textContent = display.textContent.toString().slice(0, -1)
   };
-}
-
+};
 function setOperation(operator) {
   if (currentOperation !== null) evaluate();
   firstOperand = display.textContent;
   currentOperation = operator;
   shouldResetScreen = true;
-}
-
+};
 function evaluate() {
   if (currentOperation === null || shouldResetScreen) return;
   if (currentOperation === "/" && display.textContent === "0") {
@@ -76,35 +67,25 @@ function evaluate() {
     operate(currentOperation, firstOperand, secondOperand)
   );
   currentOperation = null;
-}
-
+};
 function roundResult(number) {
   return Math.round(number * 1000000) / 1000000;
-}
-
+};
 function setInput(e) {
   if (e.key >= 0 && e.key <= 9) appendNumber(e.key);
   if (e.key === ".") appendDot();
   if (e.key === "=" || e.key === "Enter") evaluate();
   if (e.key === "Backspace") deleteNumber();
   if (e.key === "Escape") clear();
-  if (e.key === "*")
-    setOperation(convertOperator(e.key));
-}
-
-//fix this later
-function convertOperator(keyboardOperator) {
-  if (keyboardOperator === "/") return "÷";
-  if (keyboardOperator === "*") return "×";
-  if (keyboardOperator === "-") return "−";
-  if (keyboardOperator === "+") return "+";
-}
-
+  if (e.key === "+") setOperation("+");
+  if (e.key === "-") setOperation("-");
+  if (e.key === "/") setOperation("/");
+  if (e.key === "*") setOperation("×");
+};
 add = (a, b) => a + b;
 subtract = (a, b) => a - b;
 multiply = (a, b) => a * b;
 divide  = (a, b) => a / b;
-
 function operate(operator, a, b) {
   if(!isNaN(a) && !isNaN(b)){
     switch (operator) {
@@ -127,4 +108,4 @@ function operate(operator, a, b) {
   else {
     return "Invalid numbers";
   }
-}
+};
