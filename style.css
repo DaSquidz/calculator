@@ -29,6 +29,13 @@ text-shadow: 0 0 0.5vmin #778e98, 0 0 0.5vmin #778e98;
   text-shadow: 0 0 0.5vmin #221e31, 0 0 0.5vmin #221e31;
 }
 
+.btn-dot {
+  border-radius: 3vmin;
+  background-color: #778e98;
+  color: #c5dbd4;
+  text-shadow: 0 0 0.5vmin #221e31, 0 0 0.5vmin #221e31;
+}
+
 .container {
 display: grid;
 grid-template-columns: repeat(4, 1fr);
